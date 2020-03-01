@@ -19,7 +19,7 @@ const employee = [{
 
 const manager = [
     {
-        message: "What is the employee's office number?",
+        message: "What is your manager's office number?",
         type: "input",
         name: "officeNumber",
     }
@@ -27,7 +27,7 @@ const manager = [
 
 const engineer = [
     {
-        message: "What is your employee's GitHub username?",
+        message: "What is your engineer's GitHub username?",
         type: "input",
         name: "GitHub",
     }, 

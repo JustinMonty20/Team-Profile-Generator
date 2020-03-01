@@ -82,6 +82,10 @@ init();
 
 
 
+
+
+
+// first attempt at the switch statement
 // const employee = await inquirer.prompt(questions.role)
 //     console.log(employee)
       
