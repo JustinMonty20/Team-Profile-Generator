@@ -6,10 +6,12 @@ const Employee = require("./Develop/lib/Employee");
 const inquirer = require('inquirer');
 const path = require('path');
 const util = require("util")
+// found a add on to the npm fs package that has an easy way to check if a directory exists.
 const fs = require('fs-extra');
+const fsWriteFileAsync = util.promisify(fs.writeFile);
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const outputPath = path.join(OUTPUT_DIR, 'team.html');
-const fsWriteFileAsync = util.promisify(fs.writeFile);
+
 const render = require('./Develop/lib/htmlRenderer');
 
 let team = [];
@@ -22,7 +24,7 @@ async function init (){
         try { response = await inquirer.prompt(questions.employee)
                 let specific;
             // switch case that checks for the the answer to response.role 
-            // whatever their answer to that question is will ask the user 
+            // whatever their answer to that question is it will populate the team array with a new engineer, intern, or manager. 
             switch(response.role) {
                 case "Engineer":
                 specific = await inquirer.prompt(questions.engineer) 
@@ -50,13 +52,14 @@ async function init (){
         } catch (error) {
             console.log(error);
         }
-
+        // finished question that when the answer is no init() stops running
         teamBuilding = await inquirer.prompt(questions.finished)
        
     } while (teamBuilding.build === "Yes".toLocaleLowerCase())
     
-
-    fs.ensureDir(OUTPUT_DIR).then(()=>{
+    // checks to see if there is a directory in team-profile generator. 
+    // if there is not one it makes one and then it will create the html file with the team. 
+    fs.ensureDir(OUTPUT_DIR).then(() => {
         fsWriteFileAsync(outputPath, render(team));
     })
     
