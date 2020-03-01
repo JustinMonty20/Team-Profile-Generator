@@ -1,8 +1,9 @@
 .text-center{
-    color: #70AE6E
+    text-emphasis: bold;
 }
 .team-heading{
     background-color: #EFD0CA;
+    
 }
 .card{
     margin: 10px;
