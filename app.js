@@ -34,19 +34,19 @@ async function init (){
         try { response = await inquirer.prompt(questions.employee)
                 let specific;
             switch(response.role) {
-                case "Engineer".toLowerCase():
+                case "Engineer":
                 specific = await inquirer.prompt(questions.engineer) 
                 const engineer = new Engineer(response.name, response.id, response.email, specific.GitHub)
                 team.push(engineer)
                 break;   
                 
-                case "Manager".toLowerCase():
+                case "Manager":
                 specific = await inquirer.prompt(questions.manager)
                 const manager = new Manager(response.name, response.id, response.email, specific.officeNumber)
                 team.push(manager)
                 break;
 
-                case "Intern".toLowerCase():
+                case "Intern":
                 specific = await inquirer.prompt(questions.intern)
                 const intern = new Intern(response.name, response.id, response.email, specific.school)
                 team.push(intern)
