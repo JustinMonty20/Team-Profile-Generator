@@ -52,7 +52,7 @@ async function init (){
         } catch (error) {
             console.log(error);
         }
-        // finished question that when the answer is no init() stops running
+        // finished question that when the answer === no init() stops running
         teamBuilding = await inquirer.prompt(questions.finished)
        
     } while (teamBuilding.build === "Yes".toLocaleLowerCase())
